@@ -20,15 +20,37 @@ const teamMembers = [
     { name: "Neel", description: "Concierge Lead", avatar: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxQUk9GSUxFJTIwUElDfGVufDB8fHx8MTc1NTQ0MTEzNHww&ixlib=rb-4.1.0&q=80&w=1080", fallback: "N" },
 ];
 
-const messages = [
-    { from: "Dr. Warren", time: "10:30 AM", content: "Hi Jane, your latest lab results are in. I've reviewed them and everything looks great. I noted a slight dip in Vitamin D and recommend a supplement.", isUser: false },
-    { from: "Jane Doe", time: "10:32 AM", content: "Thanks for the update! Any specific brand of Vitamin D you'd recommend?", isUser: true },
-    { from: "Dr. Warren", time: "10:35 AM", content: "I recommend Thorne Vitamin D-5000. I've added it to your plan. You can approve it from the 'Interventions' tab.", isUser: false },
-];
+const conversations = {
+    "Dr. Warren": [
+        { from: "Dr. Warren", time: "Yesterday", content: "Hi Jane, your latest lab results are in and they look excellent. I noted a slight dip in Vitamin D, so I recommend a high-quality supplement. I've added Thorne D-5000 to your plan for approval.", isUser: false },
+        { from: "Jane Doe", time: "Yesterday", content: "Thanks for the quick update, Dr. Warren. I'll approve that now. Should I be concerned about the Vitamin D?", isUser: true },
+        { from: "Dr. Warren", time: "Yesterday", content: "Not at all. It's a minor dip, common in this season. The supplement should correct it efficiently. We'll re-test in your next quarterly panel to confirm.", isUser: false },
+    ],
+    "Rachel": [
+        { from: "Rachel", time: "Monday", content: "Jane, great work in our session today. Your form on the deadlifts has improved significantly. Let's focus on hip mobility this week; I've added some new exercises to your program.", isUser: false },
+        { from: "Jane Doe", time: "Monday", content: "Felt that! Thanks, Rachel. The new mobility work feels challenging but good.", isUser: true },
+    ],
+    "Carla": [
+        { from: "Carla", time: "Tuesday", content: "Morning Jane! I've analyzed your food log. Great consistency. I see an opportunity to increase protein intake post-workout to optimize recovery. A smoothie with whey protein could be a simple addition.", isUser: false },
+        { from: "Jane Doe", time: "Tuesday", content: "Good idea, I can do that. Any brand you recommend?", isUser: true },
+        { from: "Carla", time: "Tuesday", content: "I recommend Momentous. It's third-party tested and very high quality. I've sent you a link.", isUser: false },
+    ],
+    "Advik": [
+        { from: "Advik", time: "Sunday", content: "Jane, your Whoop data shows a consistent 20% drop in HRV on nights you have wine. This pattern suggests alcohol is significantly impacting your restorative sleep. Let's run an experiment: no alcohol for 2 weeks and see how your metrics respond.", isUser: false },
+    ],
+    "Ruby": [
+        { from: "Ruby", time: "10:30 AM", content: "Good morning, Jane! Just a friendly reminder about your quarterly review with Dr. Warren and Neel tomorrow at 11 AM. The video link is in your calendar. Is there anything you need to prepare?", isUser: false },
+        { from: "Jane Doe", time: "10:32 AM", content: "Thanks, Ruby! All set on my end.", isUser: true },
+    ],
+    "Neel": [
+        { from: "Neel", time: "Last Month", content: "Jane, following up on our Q1 review. The team is aligned on the new focus of improving deep sleep. We're all excited to support you in this next phase. Remember, this is a long-term investment in your healthspan.", isUser: false },
+    ],
+};
 
 const CommunicationHub = () => {
   const [selected, setSelected] = React.useState("Dr. Warren");
   const selectedMember = teamMembers.find(m => m.name === selected);
+  const messages = conversations[selected as keyof typeof conversations] || [];
   const user = { name: "Jane Doe", avatar: "https://images.unsplash.com/photo-1584999734482-0361aecad844?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMnx8UFJPRklMRSUyMFBJQ3xlbnwwfHx8fDE3NTU0NDExMzR8MA&ixlib=rb-4.1.0&q=80&w=1080", fallback: "JD" };
 
   return (
@@ -43,25 +65,28 @@ const CommunicationHub = () => {
             </div>
             <ScrollArea className="flex-1">
                 <nav className="p-2 space-y-1">
-                    {teamMembers.map(member => (
-                        <Button
-                            key={member.name}
-                            variant={selected === member.name ? "secondary" : "ghost"}
-                            className="w-full justify-start gap-3 h-auto py-3 px-4"
-                            onClick={() => setSelected(member.name)}
-                        >
-                             <Avatar className="h-10 w-10">
-                                <AvatarImage src={member.avatar} data-ai-hint={`${member.name} profile`} />
-                                <AvatarFallback>{member.fallback}</AvatarFallback>
-                            </Avatar>
-                            <div className="flex-1 text-left">
-                                <p className="font-semibold text-base">{member.name}</p>
-                                <p className="font-normal text-sm text-muted-foreground truncate">
-                                    {member.name === "Dr. Warren" ? messages.filter(m => !m.isUser).at(-1)?.content : "No new messages"}
-                                </p>
-                            </div>
-                        </Button>
-                    ))}
+                    {teamMembers.map(member => {
+                        const lastMessage = conversations[member.name as keyof typeof conversations]?.filter(m => !m.isUser).at(-1);
+                        return (
+                            <Button
+                                key={member.name}
+                                variant={selected === member.name ? "secondary" : "ghost"}
+                                className="w-full justify-start gap-3 h-auto py-3 px-4"
+                                onClick={() => setSelected(member.name)}
+                            >
+                                <Avatar className="h-10 w-10">
+                                    <AvatarImage src={member.avatar} data-ai-hint={`${member.name} profile`} />
+                                    <AvatarFallback>{member.fallback}</AvatarFallback>
+                                </Avatar>
+                                <div className="flex-1 text-left">
+                                    <p className="font-semibold text-base">{member.name}</p>
+                                    <p className="font-normal text-sm text-muted-foreground truncate">
+                                        {lastMessage ? lastMessage.content : "No new messages"}
+                                    </p>
+                                </div>
+                            </Button>
+                        )
+                    })}
                 </nav>
             </ScrollArea>
         </div>
@@ -121,3 +146,5 @@ const CommunicationHub = () => {
 };
 
 export default CommunicationHub;
+
+    
