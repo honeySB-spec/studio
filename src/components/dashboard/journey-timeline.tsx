@@ -20,6 +20,8 @@ import {
   Stethoscope,
   FileText,
   Dumbbell,
+  BarChart,
+  TrendingUp,
 } from "lucide-react";
 import { Button } from "../ui/button";
 import {
@@ -34,38 +36,52 @@ import {
 const journeyData = [
   {
     icon: <ClipboardCheck className="h-4 w-4" />,
-    time: "February 2024",
-    title: "Onboarding & Initial Consult",
-    body: "Comprehensive health review and goal setting with Dr. Evelyn Reed.",
-    rationale: "Established a baseline of your health and aligned on long-term goals to create a personalized plan."
+    time: "March 2025",
+    title: "Initial Health Inquiry & Onboarding",
+    body: "Reached out to Elyx with concerns about elevated resting heart rate and low HRV. Underwent a multi-expert review and received a post-onboarding plan with diagnostics.",
+    rationale: "Triggered by consistent red recovery scores on Whoop, Arjun's inquiry led to a structured plan to align wearable data with clinical biomarkers, moving from fragmented self-management to a systematic health journey.",
   },
   {
     icon: <TestTube2 className="h-4 w-4" />,
-    time: "March 2024",
-    title: "Diagnostic Tests",
-    body: "Full blood panel and genetic markers analysis.",
-    rationale: "To identify potential risks, understand your unique biological makeup, and tailor interventions precisely."
+    time: "March 2025",
+    title: "Clarification, Data Gathering & Initial Workout Plan",
+    body: "After diagnostic blood draw, received interpreted lab panel (ApoB 102). Started lifestyle-first intervention with nutrition and performance experiments.",
+    rationale: "To address anxiety over lab results, the team provided context and recommended a 12-week lifestyle intervention, shifting Arjun from a worried patient to an engaged co-experimenter.",
   },
   {
-    icon: <Dumbbell className="h-4 w-4" />,
-    time: "April 2024",
-    title: "Intervention: Nutrition Plan",
-    body: "Started a Mediterranean diet plan focused on cognitive health.",
-    rationale: "Based on genetic markers for APOE4, this diet is proven to support brain health and reduce inflammation."
+    icon: <TrendingUp className="h-4 w-4" />,
+    time: "April 2025",
+    title: "Early Wins & Refining the Plan",
+    body: "Established early wins with improved HRV from structured sleep, nutrition, and training consistency, even during travel.",
+    rationale: "To build motivation, this phase focused on consolidating routines. Seeing measurable improvements in HRV and consistency turned Arjun’s skepticism into confidence in the process.",
   },
   {
     icon: <Stethoscope className="h-4 w-4" />,
-    time: "May 2024",
-    title: "Physiotherapy Session",
-    body: "First session with physiotherapist to address lower back pain.",
-    rationale: "Wearable data indicated poor movement patterns during sleep. Physiotherapy aims to correct this and improve sleep quality."
+    time: "May 2025",
+    title: "Travel Stress Test & Mid-Quarter Adjustments",
+    body: "Maintained consistency during a demanding 3-week travel schedule, testing the durability of nutrition and exercise frameworks under extreme jet lag and work pressure.",
+    rationale: "Framed as a resilience experiment, this phase helped Arjun learn to bend his new habits without breaking them. Partial success under pressure was a significant psychological victory.",
+  },
+  {
+    icon: <BarChart className="h-4 w-4" />,
+    time: "June 2025",
+    title: "Q2 Diagnostics & Strategic Reset",
+    body: "Q2 diagnostics showed significant progress: ApoB dropped from 102 to 86 mg/dL. The results validated the lifestyle-first approach, leading to a strategic reset for Q3.",
+    rationale: "This critical checkpoint provided objective proof that the interventions were working. The positive results shifted Arjun's mindset from anxious to motivated, ready for a deeper commitment.",
+  },
+  {
+    icon: <Dumbbell className="h-4 w-4" />,
+    time: "July 2025",
+    title: "Consolidation & Building Strength",
+    body: "Shifted focus from stabilizing risks to building physical strength and cardiovascular resilience with a periodized training block.",
+    rationale: "To build on the foundation of Q2's success, this phase introduced structured strength training. This helped Arjun internalize the long-term value of strength for longevity, not just short-term metrics.",
   },
   {
     icon: <FileText className="h-4 w-4" />,
-    time: "June 2024",
-    title: "Quarterly Results Review",
-    body: "Deep dive into Q1 progress, showing a 5% improvement in VO₂max.",
-    rationale: "Reviewed outcomes of initial interventions to celebrate wins and adjust the plan for the next quarter, focusing on strength training."
+    time: "August 2025",
+    title: "Peak Workload, Resilience vs. Regression",
+    body: "Successfully navigated the heaviest professional workload of the year, maintaining 75% adherence to workouts and preserving health gains under maximum stress.",
+    rationale: "This phase tested whether Arjun's new systems could hold up under extreme pressure. By holding the line instead of collapsing, he proved his resilience and solidified his confidence in the system.",
   },
 ];
 
