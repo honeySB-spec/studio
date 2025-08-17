@@ -1,6 +1,7 @@
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import {
   Card,
   CardContent,
@@ -42,7 +43,7 @@ function SubmitButton() {
 }
 
 const AiInsights = () => {
-    const [state, formAction] = useFormState(getHealthInsightsAction, initialState);
+    const [state, formAction] = useActionState(getHealthInsightsAction, initialState);
     const { toast } = useToast();
     const formRef = React.useRef<HTMLFormElement>(null);
 
