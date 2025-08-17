@@ -70,16 +70,20 @@ const AppSidebar = () => {
       <SidebarFooter className="p-2">
          <SidebarMenu>
             <SidebarMenuItem>
-                <SidebarMenuButton tooltip="Support">
+              <Link href="/messages" passHref>
+                <SidebarMenuButton tooltip="Support" isActive={pathname === '/messages'}>
                     <LifeBuoy />
                     <span>Support</span>
                 </SidebarMenuButton>
+              </Link>
             </SidebarMenuItem>
             <SidebarMenuItem>
-                <SidebarMenuButton tooltip="Settings">
+              <Link href="/profile" passHref>
+                <SidebarMenuButton tooltip="Settings" isActive={pathname === '/profile'}>
                     <Settings />
                     <span>Settings</span>
                 </SidebarMenuButton>
+              </Link>
             </SidebarMenuItem>
             <SidebarMenuItem>
               <Link href="/profile" passHref>
