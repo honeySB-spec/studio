@@ -28,9 +28,9 @@ const AppSidebar = () => {
   const menuItems = [
     { href: "/", icon: <LayoutDashboard />, label: "Dashboard", tooltip: "Dashboard" },
     { href: "/journey", icon: <GitMerge />, label: "Journey", tooltip: "Journey" },
-    { href: "/", icon: <MessageSquare />, label: "Messages", tooltip: "Messages" },
-    { href: "/", icon: <BarChart3 />, label: "Reports", tooltip: "Reports" },
-    { href: "/", icon: <BrainCircuit />, label: "AI Insights", tooltip: "AI Insights" },
+    { href: "/messages", icon: <MessageSquare />, label: "Messages", tooltip: "Messages" },
+    { href: "/reports", icon: <BarChart3 />, label: "Reports", tooltip: "Reports" },
+    { href: "/ai-insights", icon: <BrainCircuit />, label: "AI Insights", tooltip: "AI Insights" },
   ];
 
   return (
