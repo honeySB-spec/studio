@@ -4,8 +4,9 @@ import AppHeader from '@/components/layout/header';
 import OverviewCards from '@/components/dashboard/overview-cards';
 import ProgressReport from '@/components/dashboard/progress-report';
 import JourneyTimeline from '@/components/dashboard/journey-timeline';
-import TeamStats from '@/components/dashboard/team-stats';
 import AiInsights from '@/components/dashboard/ai-insights';
+import PredictiveAlerts from '@/components/dashboard/predictive-alerts';
+import HealthStreaks from '@/components/dashboard/health-streaks';
 
 export default function DashboardPage() {
   return (
@@ -22,11 +23,10 @@ export default function DashboardPage() {
                 <AiInsights />
               </div>
               <div className="lg:col-span-1 space-y-8">
+                <PredictiveAlerts />
+                <HealthStreaks />
                 <JourneyTimeline />
               </div>
-            </div>
-            <div className="grid gap-8 md:grid-cols-2">
-                <TeamStats />
             </div>
           </main>
         </SidebarInset>

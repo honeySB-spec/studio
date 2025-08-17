@@ -22,6 +22,7 @@ import {
   Dumbbell,
   BarChart,
   TrendingUp,
+  HelpCircle,
 } from "lucide-react";
 import { Button } from "../ui/button";
 import {
@@ -35,6 +36,14 @@ import {
   } from "@/components/ui/dialog"
 import { ScrollArea } from "../ui/scroll-area";
 import { Separator } from "../ui/separator";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+  } from "@/components/ui/tooltip"
+import Link from "next/link";
+import { Badge } from "../ui/badge";
 
 const journeyData = [
     {
@@ -51,10 +60,10 @@ const journeyData = [
                 "Skepticism about process: Arjun asked whether Elyx could provide more action-oriented insights rather than “general lifestyle advice.”",
             ],
             interventions: [
-                { expert: "Dr. Warren (Medical Strategist)", action: "Recommended a baseline advanced blood panel (lipids, ApoB, HbA1c, hs-CRP) to align wearable data with clinical biomarkers." },
-                { expert: "Carla (Nutritionist)", action: "Suggested food logging for 5 days to understand possible contributors to his recovery dips." },
-                { expert: "Advik (Performance Scientist)", action: "Proposed a stress-recovery correlation study, tracking Arjun’s HRV across different travel and work intensity phases." },
-                { expert: "Ruby (Concierge)", action: "Coordinated scheduling, arranging a lifestyle consultation with Dr. Warren and Advik for March 14." },
+                { expert: "Dr. Warren (Medical Strategist)", action: "Recommended a baseline advanced blood panel (lipids, ApoB, HbA1c, hs-CRP) to align wearable data with clinical biomarkers.", justification: "Wearable data provides signals, but clinical biomarkers are needed for a definitive risk assessment. An advanced lipid panel, including ApoB, offers a more accurate picture of cardiovascular risk than a standard cholesterol test.", evidenceLink: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8722165/" },
+                { expert: "Carla (Nutritionist)", action: "Suggested food logging for 5 days to understand possible contributors to his recovery dips.", justification: "Nutrition has a direct impact on HRV and resting heart rate. Logging meals helps identify patterns related to timing, macronutrient balance, and specific food triggers (like alcohol or processed foods) that may be affecting recovery.", evidenceLink: "https://www.frontiersin.org/articles/10.3389/fnut.2021.704449/full" },
+                { expert: "Advik (Performance Scientist)", action: "Proposed a stress-recovery correlation study, tracking Arjun’s HRV across different travel and work intensity phases.", justification: "This establishes a personalized baseline, showing how Arjun's nervous system responds to specific stressors like travel and high-stakes meetings. It helps differentiate between physical and psychological stress, enabling more targeted interventions.", evidenceLink: "https://www.whoop.com/us/en/the-locker/heart-rate-variability-hrv/" },
+                { expert: "Ruby (Concierge)", action: "Coordinated scheduling, arranging a lifestyle consultation with Dr. Warren and Advik for March 14.", justification: "Efficiently scheduling consultations with multiple experts ensures a cohesive and timely response, which builds member trust and momentum from the outset.", evidenceLink: "" },
             ],
             finalOutcome: "Arjun received his post-onboarding plan, outlining diagnostics, data collection, and next steps. He felt engaged with the Elyx process, shifting from feeling “uncoordinated” to feeling that there was a system and team behind his health journey.",
             personaAnalysis: {
@@ -81,10 +90,10 @@ const journeyData = [
                 "Skepticism about food tracking: Initially dismissed logging meals as 'tedious.'",
             ],
             interventions: [
-                { expert: "Dr. Warren", action: "Interpreted lab panel (ApoB 102, hs-CRP 2.2). Recommended a 12-week lifestyle-first intervention, targeting ApoB < 80 mg/dL." },
-                { expert: "Carla", action: "Analyzed food logs, identified low fiber. Introduced 'Travel Plate Framework' and recommended 25-30g fiber/day." },
-                { expert: "Advik", action: "Mapped HRV vs. workload, discovered HRV crashed after red-eye flights. Recommended a sleep consistency experiment." },
-                { expert: "Ruby", action: "Coordinated lab logistics and organized a summary call to present findings." },
+                { expert: "Dr. Warren", action: "Interpreted lab panel (ApoB 102, hs-CRP 2.2). Recommended a 12-week lifestyle-first intervention, targeting ApoB < 80 mg/dL.", justification: "An ApoB of 102 is borderline high. Clinical guidelines support a 3-month intensive lifestyle intervention (nutrition, exercise) as the first line of defense before considering statin therapy, especially in a motivated individual.", evidenceLink: "https://www.ahajournals.org/doi/10.1161/CIR.0000000000000678" },
+                { expert: "Carla", action: "Analyzed food logs, identified low fiber. Introduced 'Travel Plate Framework' and recommended 25-30g fiber/day.", justification: "Soluble fiber has a proven, dose-dependent effect on lowering ApoB and LDL cholesterol. The 'Travel Plate Framework' is a simple heuristic that makes healthy eating decisions easier under cognitive load, improving adherence.", evidenceLink: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6566984/" },
+                { expert: "Advik", action: "Mapped HRV vs. workload, discovered HRV crashed after red-eye flights. Recommended a sleep consistency experiment.", justification: "Consistent sleep timing is the single most powerful lever for stabilizing the circadian rhythm and improving HRV. An experiment makes the cause-and-effect relationship clear to the user, increasing buy-in for behavior change.", evidenceLink: "https://www.sleepfoundation.org/sleep-hygiene/sleep-consistency" },
+                { expert: "Ruby", action: "Coordinated lab logistics and organized a summary call to present findings.", justification: "A coordinated call prevents fragmented communication and ensures the member understands how different aspects of their plan (medical, nutrition, performance) are interconnected.", evidenceLink: "" },
             ],
             finalOutcome: "Arjun's anxiety reduced after Dr. Warren contextualized the results. He began experimenting with the Travel Plate Framework and completed the sleep consistency trial, improving his HRV. His mindset shifted from 'worried patient' to 'engaged co-experimenter.'",
             personaAnalysis: {
@@ -112,10 +121,10 @@ const journeyData = [
                 "Business dining in Dubai making nutrition adherence challenging.",
             ],
             interventions: [
-                { expert: "Dr. Warren", action: "Reassured Arjun and approved an experiment with omega-3 supplementation." },
-                { expert: "Carla", action: "Designed a 'Protein Priority System' and a 'Dubai Dining Guide.' Introduced a psyllium hack for fiber." },
-                { expert: "Advik", action: "Ran data analysis showing HRV improvement with Zone 2 cardio. Recommended a structured 4-week training block." },
-                { expert: "Rachel", action: "Introduced a mobility sequence and coached on strength training form via video." },
+                { expert: "Dr. Warren", action: "Reassured Arjun and approved an experiment with omega-3 supplementation.", justification: "Omega-3 fatty acids have anti-inflammatory properties and have been shown to support cardiovascular health, including lipid management. Approving a controlled experiment empowers the user while ensuring it's done safely.", evidenceLink: "https://www.ahajournals.org/doi/10.1161/JAHA.119.013543" },
+                { expert: "Carla", action: "Designed a 'Protein Priority System' and a 'Dubai Dining Guide.' Introduced a psyllium hack for fiber.", justification: "Prioritizing protein increases satiety and helps maintain muscle mass. The 'Dining Guide' and 'Psyllium Hack' are practical tools that reduce decision fatigue and increase adherence in challenging environments.", evidenceLink: "" },
+                { expert: "Advik", action: "Ran data analysis showing HRV improvement with Zone 2 cardio. Recommended a structured 4-week training block.", justification: "Zone 2 training specifically targets mitochondrial efficiency and improves the aerobic base, which directly translates to better cardiovascular health and higher HRV. Showing the user their own data is the most effective way to overcome skepticism.", evidenceLink: "https://www.peterattiamd.com/ama27/" },
+                { expert: "Rachel", action: "Introduced a mobility sequence and coached on strength training form via video.", justification: "Good mobility is the foundation for safe and effective strength training. Video feedback allows for precise, remote coaching, preventing injury and ensuring the user gets the maximum benefit from their workouts.", evidenceLink: "" },
             ],
             finalOutcome: "Successfully hit 5 hours/week of exercise. HRV climbed to 50-52 ms. Zone 2 skepticism turned into curiosity. Completed his first 4-week training block with high consistency.",
             personaAnalysis: {
@@ -144,10 +153,10 @@ const journeyData = [
                 "Mental fatigue and 'cognitive fog' during presentations.",
             ],
             interventions: [
-                { expert: "Dr. Warren", action: "Advised treating May as a 'damage control' month. Recommended daily BP tracking." },
-                { expert: "Carla", action: "Reinforced 'Travel Plate Framework' with a '2:1 rule' for balancing indulgent meals. Suggested a travel supplement kit." },
-                { expert: "Advik", action: "Created a 'Travel Recovery Playbook' with minimum/maximum workout options and a 'Flight Reset Protocol.'" },
-                { expert: "Rachel", action: "Provided a hotel-room band circuit as a backup for gym closures." },
+                { expert: "Dr. Warren", action: "Advised treating May as a 'damage control' month. Recommended daily BP tracking.", justification: "High stress and jet lag can elevate blood pressure. Daily tracking provides crucial data to ensure safety and adjust the plan if readings become concerning. Framing it as 'damage control' manages expectations and reduces performance anxiety.", evidenceLink: "" },
+                { expert: "Carla", action: "Reinforced 'Travel Plate Framework' with a '2:1 rule' for balancing indulgent meals. Suggested a travel supplement kit.", justification: "Simple rules and pre-packed supplements reduce cognitive load during a stressful period, making adherence more likely. The goal is to make the healthy choice the easy choice.", evidenceLink: "" },
+                { expert: "Advik", action: "Created a 'Travel Recovery Playbook' with minimum/maximum workout options and a 'Flight Reset Protocol.'", justification: "A playbook provides clear, pre-defined options for different energy levels, preventing the 'all-or-nothing' mindset that often derails routines during travel. The Flight Reset Protocol uses light exposure and movement to accelerate circadian adaptation.", evidenceLink: "" },
+                { expert: "Rachel", action: "Provided a hotel-room band circuit as a backup for gym closures.", justification: "Having a backup plan is critical for maintaining consistency when external factors (like a closed gym) are unpredictable. A band workout is portable and effective for maintaining muscle activation.", evidenceLink: "" },
             ],
             finalOutcome: "Completed 8/12 workouts. HRV rebounded to mid-40s. Avoided major carb overload. Reported sharper focus after applying flight protocols. Felt pride in salvaging progress under pressure.",
             personaAnalysis: {
@@ -175,10 +184,10 @@ const journeyData = [
                 "Unrealistic expectations for 'perfect' labs after one quarter.",
             ],
             interventions: [
-                { expert: "Dr. Warren", action: "Interpreted results: ApoB dropped to 86, hs-CRP to 1.5. Framed it as 'clear early progress' and continued lifestyle-first approach." },
-                { expert: "Carla", action: "Celebrated fiber intake as the primary driver of improvements. Suggested tightening evening nutrition for Q3." },
-                { expert: "Advik", action: "Analyzed 90 days of Whoop data showing improved HRV, RHR, and sleep. Proposed a Q3 periodized training block." },
-                { expert: "Ruby", action: "Organized a team strategy session and summarized results into a one-page dashboard for Arjun." },
+                { expert: "Dr. Warren", action: "Interpreted results: ApoB dropped to 86, hs-CRP to 1.5. Framed it as 'clear early progress' and continued lifestyle-first approach.", justification: "A 15% reduction in ApoB from lifestyle alone is a significant clinical win. Reinforcing this success builds self-efficacy and motivation to continue with the plan before escalating to pharmaceuticals.", evidenceLink: "https://my.clevelandclinic.org/health/diseases/24689-apolipoprotein-b-apob" },
+                { expert: "Carla", action: "Celebrated fiber intake as the primary driver of improvements. Suggested tightening evening nutrition for Q3.", justification: "Attributing success to a specific behavior (fiber intake) reinforces that action. Targeting evening nutrition is a high-leverage next step, as it can improve both metabolic health and sleep quality.", evidenceLink: "" },
+                { expert: "Advik", action: "Analyzed 90 days of Whoop data showing improved HRV, RHR, and sleep. Proposed a Q3 periodized training block.", justification: "Presenting a 90-day trend analysis makes progress tangible. Periodization is a systematic way to manage training stress, ensuring continued adaptation while minimizing burnout or injury risk. It moves from ad-hoc workouts to a strategic training plan.", evidenceLink: "" },
+                { expert: "Ruby", action: "Organized a team strategy session and summarized results into a one-page dashboard for Arjun.", justification: "A unified team session ensures all experts are aligned on the go-forward strategy. A one-page summary distills complex information into a simple, actionable format, reducing the member's cognitive load.", evidenceLink: "" },
             ],
             finalOutcome: "ApoB progress validated lifestyle changes. Arjun shifted from anxious to motivated. A clear Q3 roadmap was set. He felt his health metrics were 'levers I can influence.'",
             personaAnalysis: {
@@ -206,10 +215,10 @@ const journeyData = [
                 "Mid-month motivation dip, questioning the 'feel' of progress from strength training.",
             ],
             interventions: [
-                { expert: "Carla", action: "Helped transition from fiber/magnesium supplements to food sources. Introduced a post-strength recovery snack plan." },
-                { expert: "Advik", action: "Rolled out a 4-week training block. Reassured Arjun that HRV dips after strength work were normal adaptation." },
-                { expert: "Rachel", action: "Coached form via video review and prescribed pre-strength mobility drills." },
-                { expert: "Ruby", action: "Organized a mid-month feedback call to address the motivation dip, reframing strength as a long-term foundation." },
+                { expert: "Carla", action: "Helped transition from fiber/magnesium supplements to food sources. Introduced a post-strength recovery snack plan.", justification: "A 'food first' approach is more sustainable long-term. A targeted post-workout snack (protein + carbs) is timed to optimize muscle protein synthesis and glycogen replenishment, reducing soreness.", evidenceLink: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3905295/" },
+                { expert: "Advik", action: "Rolled out a 4-week training block. Reassured Arjun that HRV dips after strength work were normal adaptation.", justification: "Strength training creates a different type of stress than cardio. Educating the user that a temporary HRV dip is a normal part of the adaptation process prevents them from misinterpreting it as a negative signal and stopping the program.", evidenceLink: "" },
+                { expert: "Rachel", action: "Coached form via video review and prescribed pre-strength mobility drills.", justification: "Correct form is paramount for injury prevention, especially when progressing load. Pre-workout mobility activates the correct muscles and improves range of motion, leading to a more effective and safer session.", evidenceLink: "" },
+                { expert: "Ruby", action: "Organized a mid-month feedback call to address the motivation dip, reframing strength as a long-term foundation.", justification: "Motivation is not constant. Proactively addressing a dip with a feedback call and reframing the goal (from short-term metrics to long-term resilience) helps the user stay engaged through challenging periods.", evidenceLink: "" },
             ],
             finalOutcome: "Completed 14/16 sessions. HRV remained stable. Resting HR dipped further to 66 bpm. Reported improved posture and less back stiffness. Internalized the value of strength for longevity.",
             personaAnalysis: {
@@ -238,10 +247,10 @@ const journeyData = [
                 "Workout drop-off risk and frustration over 'slipping back.'",
             ],
             interventions: [
-                { expert: "Dr. Warren", action: "Monitored BP spikes. Reassured that temporary fluctuations were expected, not regression." },
-                { expert: "Carla", action: "Reintroduced the 80/20 rule for flexibility. Suggested portable nutrition hacks like protein bars and electrolyte sachets." },
-                { expert: "Advik", action: "Reframed workouts as 'maintenance minimums.' Shared quick 15-min routines for busy days. Showed data of HRV dip and rebound." },
-                { expert: "Ruby", action: "Sent motivational nudges like 'Think consistency, not perfection.' Organized an end-of-month reflection call." },
+                { expert: "Dr. Warren", action: "Monitored BP spikes. Reassured that temporary fluctuations were expected, not regression.", justification: "During high-stress periods, reassurance from a medical expert is key. It helps the member differentiate between a temporary, expected physiological response and a genuine health regression, preventing unnecessary anxiety.", evidenceLink: "" },
+                { expert: "Carla", action: "Reintroduced the 80/20 rule for flexibility. Suggested portable nutrition hacks like protein bars and electrolyte sachets.", justification: "Rigid plans fail under high stress. The 80/20 rule provides psychological flexibility, while portable hacks ensure the member is prepared and not forced into poor choices by their environment.", evidenceLink: "" },
+                { expert: "Advik", action: "Reframed workouts as 'maintenance minimums.' Shared quick 15-min routines for busy days. Showed data of HRV dip and rebound.", justification: "Lowering the barrier to exercise ('maintenance minimums') increases the likelihood of adherence during low-resource periods. Showing the data of a dip followed by a rebound visually reinforces the concept of resilience.", evidenceLink: "" },
+                { expert: "Ruby", action: "Sent motivational nudges like 'Think consistency, not perfection.' Organized an end-of-month reflection call.", justification: "Targeted motivational messages can interrupt negative thought patterns (e.g., 'I'm failing'). An end-of-month reflection call helps the member process the experience and recognize their own resilience, turning a hard month into a learned success.", evidenceLink: "" },
             ],
             finalOutcome: "Completed 9/12 sessions (75%). HRV dipped but rebounded. Nutrition adherence was ~80%. Arjun felt he 'held the line' instead of collapsing, which he considered a win.",
             personaAnalysis: {
@@ -313,10 +322,29 @@ const JourneyTimeline = () => {
 
                             <div className="space-y-2">
                                 <h4 className="font-semibold text-base">Interventions & Actions Taken</h4>
-                                <ul className="space-y-2 text-muted-foreground">
+                                <ul className="space-y-3 text-muted-foreground">
                                     {item.details.interventions.map((intervention, i) => (
-                                        <li key={i}>
-                                            <span className="font-semibold text-foreground/90">{intervention.expert}:</span> {intervention.action}
+                                        <li key={i} className="flex flex-col gap-1">
+                                            <div>
+                                                <span className="font-semibold text-foreground/90">{intervention.expert}:</span> {intervention.action}
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                 <TooltipProvider>
+                                                    <Tooltip>
+                                                        <TooltipTrigger asChild>
+                                                            <Button variant="ghost" size="icon" className="h-6 w-6 text-muted-foreground">
+                                                                <HelpCircle className="h-4 w-4" />
+                                                            </Button>
+                                                        </TooltipTrigger>
+                                                        <TooltipContent className="max-w-xs" side="right">
+                                                            <p className="font-bold mb-2">Why this intervention?</p>
+                                                            <p>{intervention.justification}</p>
+                                                            {intervention.evidenceLink && <Link href={intervention.evidenceLink} target="_blank" className="text-primary hover:underline text-xs mt-2 block">View Evidence</Link>}
+                                                        </TooltipContent>
+                                                    </Tooltip>
+                                                </TooltipProvider>
+                                                <Badge variant="outline">Why this?</Badge>
+                                            </div>
                                         </li>
                                     ))}
                                 </ul>
