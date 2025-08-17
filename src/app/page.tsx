@@ -7,6 +7,7 @@ import JourneyTimeline from '@/components/dashboard/journey-timeline';
 import AiInsights from '@/components/dashboard/ai-insights';
 import PredictiveAlerts from '@/components/dashboard/predictive-alerts';
 import HealthStreaks from '@/components/dashboard/health-streaks';
+import TeamStats from '@/components/dashboard/team-stats';
 
 export default function DashboardPage() {
   return (
@@ -23,6 +24,7 @@ export default function DashboardPage() {
                 <AiInsights />
               </div>
               <div className="lg:col-span-1 space-y-8">
+                <TeamStats />
                 <PredictiveAlerts />
                 <HealthStreaks />
                 <JourneyTimeline />
