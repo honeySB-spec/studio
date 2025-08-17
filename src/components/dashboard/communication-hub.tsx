@@ -20,23 +20,9 @@ const teamMembers = [
     { name: "Neel", description: "Concierge Lead", avatar: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxQUk9GSUxFJTIwUElDfGVufDB8fHx8MTc1NTQ0MTEzNHww&ixlib=rb-4.1.0&q=80&w=1080", fallback: "N" },
 ];
 
-const conversations: { [key: string]: any[] } = {
-    "Dr. Warren": [],
-    "Rachel": [],
-    "Carla": [],
-    "Advik": [],
-    "Ruby": [],
-    "Neel": [],
-};
+const conversations: { [key: string]: any[] } = {};
 
-const allMessagesFromUser: { [key: string]: any[] } = {
-    "Dr. Warren": [],
-    "Rachel": [],
-    "Carla": [],
-    "Advik": [],
-    "Ruby": [],
-    "Neel": [],
-};
+const allMessagesFromUser: { [key: string]: any[] } = {};
 
 const CommunicationHub = () => {
   const [selected, setSelected] = React.useState("Dr. Warren");
@@ -73,7 +59,7 @@ const CommunicationHub = () => {
 
 
   return (
-    <Card className="shadow-md flex h-full w-full rounded-none border-0">
+    <Card className="flex h-full w-full rounded-none border-0 shadow-none">
         <div className="flex flex-col w-[300px] border-r bg-muted/20">
             <div className="p-4 border-b">
                 <h2 className="text-2xl font-headline font-bold">Messages</h2>

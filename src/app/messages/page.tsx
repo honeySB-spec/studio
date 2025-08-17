@@ -10,7 +10,7 @@ export default function MessagesPage() {
         <AppSidebar />
         <SidebarInset className="flex-1 bg-background flex flex-col">
           <AppHeader />
-          <main className="flex-1 overflow-hidden">
+          <main className="flex-1 overflow-y-auto">
             <CommunicationHub />
           </main>
         </SidebarInset>
