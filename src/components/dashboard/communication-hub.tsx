@@ -12,8 +12,8 @@ import { Send, Search, MessageSquare } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const teamMembers = [
-    { name: "Dr. Warren", description: "MD", avatar: "https://placehold.co/100x100/3F51B5/FFFFFF.png", fallback: "DW" },
-    { name: "Rachel", description: "PT", avatar: "https://placehold.co/100x100/F44336/FFFFFF.png", fallback: "R" },
+    { name: "Dr. Warren", description: "MD", avatar: "https://placehold.co/100x100/673AB7/FFFFFF.png", fallback: "DW" },
+    { name: "Rachel", description: "PT", avatar: "https://placehold.co/100x100/3F51B5/FFFFFF.png", fallback: "R" },
     { name: "Carla", description: "Nutritionist", avatar: "https://placehold.co/100x100/4CAF50/FFFFFF.png", fallback: "C" },
     { name: "Advik", description: "Performance Scientist", avatar: "https://placehold.co/100x100/009688/FFFFFF.png", fallback: "A" },
     { name: "Ruby", description: "Concierge", avatar: "https://placehold.co/100x100/FFC107/FFFFFF.png", fallback: "R" },
@@ -55,6 +55,7 @@ const CommunicationHub = () => {
                             </Avatar>
                             <div>
                                 <p className="font-semibold text-base text-left">{member.name}</p>
+
                                 <p className="font-normal text-sm text-muted-foreground text-left">{member.description}</p>
                             </div>
                         </Button>
