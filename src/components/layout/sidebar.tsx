@@ -19,8 +19,20 @@ import {
   Settings,
   LifeBuoy,
 } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const AppSidebar = () => {
+  const pathname = usePathname();
+
+  const menuItems = [
+    { href: "/", icon: <LayoutDashboard />, label: "Dashboard", tooltip: "Dashboard" },
+    { href: "/", icon: <GitMerge />, label: "Journey", tooltip: "Journey" },
+    { href: "/", icon: <MessageSquare />, label: "Messages", tooltip: "Messages" },
+    { href: "/", icon: <BarChart3 />, label: "Reports", tooltip: "Reports" },
+    { href: "/", icon: <BrainCircuit />, label: "AI Insights", tooltip: "AI Insights" },
+  ];
+
   return (
     <Sidebar className="border-r" collapsible="icon">
       <SidebarHeader className="p-4">
@@ -40,36 +52,16 @@ const AppSidebar = () => {
       </SidebarHeader>
       <SidebarContent className="flex-1 p-2">
         <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton isActive tooltip="Dashboard">
-              <LayoutDashboard />
-              <span>Dashboard</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton tooltip="Journey">
-              <GitMerge />
-              <span>Journey</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton tooltip="Messages">
-              <MessageSquare />
-              <span>Messages</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton tooltip="Reports">
-              <BarChart3 />
-              <span>Reports</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-           <SidebarMenuItem>
-            <SidebarMenuButton tooltip="AI Insights">
-              <BrainCircuit />
-              <span>AI Insights</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
+          {menuItems.map((item) => (
+            <SidebarMenuItem key={item.label}>
+              <Link href={item.href} passHref>
+                <SidebarMenuButton isActive={pathname === item.href} tooltip={item.tooltip}>
+                  {item.icon}
+                  <span>{item.label}</span>
+                </SidebarMenuButton>
+              </Link>
+            </SidebarMenuItem>
+          ))}
         </SidebarMenu>
       </SidebarContent>
       <SidebarFooter className="p-2">
