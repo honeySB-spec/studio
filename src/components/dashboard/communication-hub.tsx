@@ -13,7 +13,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 const teamMembers = [
     { name: "Dr. Warren", description: "MD", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxQUk9GSUxFJTIwUElDfGVufDB8fHx8MTc1NTQ0MTEzNHww&ixlib=rb-4.1.0&q=80&w=1080", fallback: "DW" },
-    { name: "Rachel", description: "PT", avatar: "https://placehold.co/100x100/3F51B5/FFFFFF.png", fallback: "R" },
+    { name: "Rachel", description: "PT", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxQUk9GSUxFJTIwUElDfGVufDB8fHx8MTc1NTQ0MTEzNHww&ixlib=rb-4.1.0&q=80&w=1080", fallback: "R" },
     { name: "Carla", description: "Nutritionist", avatar: "https://placehold.co/100x100/4CAF50/FFFFFF.png", fallback: "C" },
     { name: "Advik", description: "Performance Scientist", avatar: "https://placehold.co/100x100/009688/FFFFFF.png", fallback: "A" },
     { name: "Ruby", description: "Concierge", avatar: "https://placehold.co/100x100/FFC107/FFFFFF.png", fallback: "R" },
