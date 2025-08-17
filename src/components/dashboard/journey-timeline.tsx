@@ -130,7 +130,7 @@ const journeyData = [
                 { expert: "Dr. Warren", action: "Reassured Arjun and approved an experiment with omega-3 supplementation (2g/day) to further support lipid control.", justification: "Maintain confidence and empower Arjun with controlled self-experimentation.", evidenceLink: "" },
                 { expert: "Carla", action: "Designed a Protein Priority System and a “Dubai Dining Guide.” Introduced a travel fiber hack: carrying psyllium sachets.", justification: "Provide practical tools to reduce decision fatigue in challenging environments.", evidenceLink: "" },
                 { expert: "Advik", action: "Ran a data analysis showing HRV was consistently higher (+6–8 ms) on weeks with regular Zone 2. Recommended a structured 4-week training block.", justification: "Use Arjun's own data to overcome skepticism and demonstrate the physiological benefits of Zone 2 training.", evidenceLink: "" },
-                { expert: "Rachel", action: "Introduced a mobility sequence for hotel rooms and coached on strength training form via video review.", justification: "Ensure safety and effectiveness of workouts during travel without needing in-person sessions.", evidenceLink: "" },
+                { expert: "Rachel", action: "Introduced a mobility sequence for hotel rooms and coached on strength training form via video review.", justification: "Good mobility is the foundation for safe and effective strength training. Video feedback allows for remote course correction, preventing injury and building confidence, especially when introducing new movement patterns during travel.", evidenceLink: "" },
             ],
             finalOutcome: "Arjun’s early skepticism was replaced with confidence. He saw measurable progress in his HRV and energy levels, and began to trust the process. He started proactively asking questions about optimizing his plan, completing his first 4-week structured block of training without missing more than one session.",
             personaAnalysis: {
@@ -353,7 +353,7 @@ const JourneyTimeline = () => {
                                                                     <TooltipProvider>
                                                                         <Tooltip>
                                                                             <TooltipTrigger asChild>
-                                                                                <Badge variant="outline" className="cursor-pointer">Why this?</Badge>
+                                                                                <Button variant="outline" size="sm" className="h-auto px-2 py-1 text-xs">Why this?</Button>
                                                                             </TooltipTrigger>
                                                                             <TooltipContent className="max-w-xs">
                                                                                 <p>{intervention.justification}</p>
