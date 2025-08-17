@@ -1,4 +1,5 @@
-# Elyx Web Application – Description
+# Elyx Web Application 
+ # LINK: https://9000-firebase-studio-1755439439376.cluster-m7dwy2bmizezqukxkuxd55k5ka.cloudworkstations.dev/
 
 # Overview
 Elyx is a next-generation health platform designed to maximize the number of healthy years in a member’s life. Unlike traditional healthcare systems that focus on treating illness, Elyx emphasizes prevention, optimization, and personalization. The web application acts as the central hub where members, doctors, and specialists collaborate seamlessly with AI to manage health journeys.
