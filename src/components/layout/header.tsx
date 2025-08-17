@@ -12,7 +12,7 @@ const AppHeader = () => {
         <SidebarTrigger className="md:hidden" />
         <div className="hidden md:block">
           <h1 className="text-2xl font-bold font-headline">
-            Welcome Back, Jane!
+            Welcome Back, Arjun Mehta!
           </h1>
           <p className="text-sm text-muted-foreground">
             Here's your personalized health journey at a glance.
