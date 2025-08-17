@@ -4,7 +4,6 @@ import AppHeader from '@/components/layout/header';
 import OverviewCards from '@/components/dashboard/overview-cards';
 import ProgressReport from '@/components/dashboard/progress-report';
 import JourneyTimeline from '@/components/dashboard/journey-timeline';
-import CommunicationHub from '@/components/dashboard/communication-hub';
 import TeamStats from '@/components/dashboard/team-stats';
 import AiInsights from '@/components/dashboard/ai-insights';
 
@@ -27,7 +26,6 @@ export default function DashboardPage() {
               </div>
             </div>
             <div className="grid gap-8 md:grid-cols-2">
-                <CommunicationHub />
                 <TeamStats />
             </div>
           </main>
