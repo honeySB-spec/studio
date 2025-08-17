@@ -19,6 +19,7 @@ import {
   Settings,
   LifeBuoy,
   User,
+  TestTube2,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -32,6 +33,7 @@ const AppSidebar = () => {
     { href: "/messages", icon: <MessageSquare />, label: "Messages", tooltip: "Messages" },
     { href: "/reports", icon: <BarChart3 />, label: "Reports", tooltip: "Reports" },
     { href: "/ai-insights", icon: <BrainCircuit />, label: "AI Insights", tooltip: "AI Insights" },
+    { href: "/tests", icon: <TestTube2 />, label: "Tests", tooltip: "Tests" },
   ];
 
   return (
