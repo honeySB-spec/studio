@@ -73,7 +73,7 @@ const MemberProfile = () => {
         <Card className="shadow-lg">
             <CardContent className="p-6 flex flex-col md:flex-row items-center gap-6">
                 <Avatar className="h-24 w-24 border-4 border-primary">
-                    <AvatarImage src={profileData.snapshot.avatar} data-ai-hint="member profile picture" />
+                    <AvatarImage src={profileData.snapshot.avatar} data-ai-hint="Arjun Mehta profile picture" />
                     <AvatarFallback className="text-3xl">{profileData.snapshot.fallback}</AvatarFallback>
                 </Avatar>
                 <div className="text-center md:text-left">

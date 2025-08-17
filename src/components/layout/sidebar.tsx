@@ -83,7 +83,7 @@ const AppSidebar = () => {
               <Link href="/profile" passHref>
                   <SidebarMenuButton isActive={pathname === '/profile'}>
                       <Avatar className="h-8 w-8">
-                          <AvatarImage src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxwb3J0cmFpdCUyMG1hbGV8ZW58MHx8fHwxNzU1NDQyNjc3fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Arjun Mehta" data-ai-hint="member profile picture" />
+                          <AvatarImage src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxwb3J0cmFpdCUyMG1hbGV8ZW58MHx8fHwxNzU1NDQyNjc3fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Arjun Mehta" data-ai-hint="Arjun Mehta profile picture" />
                           <AvatarFallback>AM</AvatarFallback>
                       </Avatar>
                       <div className="flex flex-col text-left">
