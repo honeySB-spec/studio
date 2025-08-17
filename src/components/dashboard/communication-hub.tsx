@@ -8,7 +8,7 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Send, Search } from "lucide-react";
+import { Send } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 const teamMembers = [
@@ -58,10 +58,6 @@ const CommunicationHub = () => {
         <div className="flex flex-col w-[300px] border-r bg-muted/20">
             <div className="p-4 border-b">
                 <h2 className="text-2xl font-headline font-bold">Messages</h2>
-                <div className="relative mt-2">
-                    <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                    <Input placeholder="Search messages..." className="pl-8" />
-                </div>
             </div>
             <ScrollArea className="flex-1">
                 <nav className="p-2 space-y-1">
@@ -146,5 +142,3 @@ const CommunicationHub = () => {
 };
 
 export default CommunicationHub;
-
-    
