@@ -23,6 +23,7 @@ import {
   BarChart,
   TrendingUp,
   HelpCircle,
+  GitMerge,
 } from "lucide-react";
 import { Button } from "../ui/button";
 import {
@@ -124,284 +125,139 @@ const journeyData = [
                 { expert: "Dr. Warren", action: "Reassured Arjun and approved an experiment with omega-3 supplementation.", justification: "Omega-3 fatty acids have anti-inflammatory properties and have been shown to support cardiovascular health, including lipid management. Approving a controlled experiment empowers the user while ensuring it's done safely.", evidenceLink: "https://www.ahajournals.org/doi/10.1161/JAHA.119.013543" },
                 { expert: "Carla", action: "Designed a 'Protein Priority System' and a 'Dubai Dining Guide.' Introduced a psyllium hack for fiber.", justification: "Prioritizing protein increases satiety and helps maintain muscle mass. The 'Dining Guide' and 'Psyllium Hack' are practical tools that reduce decision fatigue and increase adherence in challenging environments.", evidenceLink: "" },
                 { expert: "Advik", action: "Ran data analysis showing HRV improvement with Zone 2 cardio. Recommended a structured 4-week training block.", justification: "Zone 2 training specifically targets mitochondrial efficiency and improves the aerobic base, which directly translates to better cardiovascular health and higher HRV. Showing the user their own data is the most effective way to overcome skepticism.", evidenceLink: "https://www.peterattiamd.com/ama27/" },
-                { expert: "Rachel", action: "Introduced a mobility sequence and coached on strength training form via video.", justification: "Good mobility is the foundation for safe and effective strength training. Video feedback allows for precise, remote coaching, preventing injury and ensuring the user gets the maximum benefit from their workouts.", evidenceLink: "" },
+                { expert: "Rachel", action: "Introduced a mobility sequence and coached on strength training form via video.", justification: "Good mobility is the foundation for safe and effective strength training. Video feedback allows for remote form correction, ensuring safety and effectiveness without an in-person session." },
             ],
-            finalOutcome: "Successfully hit 5 hours/week of exercise. HRV climbed to 50-52 ms. Zone 2 skepticism turned into curiosity. Completed his first 4-week training block with high consistency.",
+            finalOutcome: "Arjun’s early skepticism was replaced with confidence. He saw measurable progress in his HRV and energy levels, and began to trust the process. He started proactively asking questions about optimizing his plan.",
             personaAnalysis: {
-                before: "Enthusiastic but doubtful whether small shifts would yield real impact.",
-                after: "Gained confidence in early wins. Began to trust his own ability to execute consistently.",
+                before: "Skeptical, needed proof, and felt his time was too constrained for new habits.",
+                after: "Data-driven, confident, and proactive. Shifted from asking “if” the plan would work to “how” it could be optimized.",
             },
             metricValues: [
-                { metric: "HRV", value: "50–52 ms average (↑)" },
-                { metric: "Sleep", value: "Avg 6h 55m/night" },
-                { metric: "Exercise Consistency", value: "11/12 sessions completed" },
+                { metric: "HRV (weekly avg)", value: "54 ms" },
+                { metric: "Subjective Energy", value: "7/10" },
+                { metric: "Zone 2 Adherence", value: "100% (3 sessions)" },
             ],
         }
-    },
-    {
-        icon: <Stethoscope className="h-4 w-4" />,
-        time: "May 1–23, 2025",
-        title: "Travel Stress Test & Mid-Quarter Adjustments",
-        body: "Maintained consistency during a demanding 3-week travel schedule, testing the durability of new habits under extreme jet lag and work pressure.",
-        details: {
-            primaryGoal: "Maintain at least 3 exercise sessions/week and test the durability of his nutrition framework during a 3-week, multi-continent business trip.",
-            triggeredBy: "Arjun proactively alerted the team about his 'May madness' schedule. Advik framed it as a 'travel resilience experiment.'",
-            frictionPoints: [
-                "Severe jet lag, with HRV plunging to 29 ms.",
-                "Client dinners in New York and London threatened nutrition consistency.",
-                "Hotel gym in Dubai was unexpectedly closed.",
-                "Mental fatigue and 'cognitive fog' during presentations.",
-            ],
-            interventions: [
-                { expert: "Dr. Warren", action: "Advised treating May as a 'damage control' month. Recommended daily BP tracking.", justification: "High stress and jet lag can elevate blood pressure. Daily tracking provides crucial data to ensure safety and adjust the plan if readings become concerning. Framing it as 'damage control' manages expectations and reduces performance anxiety.", evidenceLink: "" },
-                { expert: "Carla", action: "Reinforced 'Travel Plate Framework' with a '2:1 rule' for balancing indulgent meals. Suggested a travel supplement kit.", justification: "Simple rules and pre-packed supplements reduce cognitive load during a stressful period, making adherence more likely. The goal is to make the healthy choice the easy choice.", evidenceLink: "" },
-                { expert: "Advik", action: "Created a 'Travel Recovery Playbook' with minimum/maximum workout options and a 'Flight Reset Protocol.'", justification: "A playbook provides clear, pre-defined options for different energy levels, preventing the 'all-or-nothing' mindset that often derails routines during travel. The Flight Reset Protocol uses light exposure and movement to accelerate circadian adaptation.", evidenceLink: "" },
-                { expert: "Rachel", action: "Provided a hotel-room band circuit as a backup for gym closures.", justification: "Having a backup plan is critical for maintaining consistency when external factors (like a closed gym) are unpredictable. A band workout is portable and effective for maintaining muscle activation.", evidenceLink: "" },
-            ],
-            finalOutcome: "Completed 8/12 workouts. HRV rebounded to mid-40s. Avoided major carb overload. Reported sharper focus after applying flight protocols. Felt pride in salvaging progress under pressure.",
-            personaAnalysis: {
-                before: "Concerned, almost defeatist, anticipating travel would derail progress.",
-                after: "Energized by reframing May as an experiment in resilience. Gained confidence he could carry protocols into any environment.",
-            },
-            metricValues: [
-                { metric: "HRV", value: "Range 29–47 ms" },
-                { metric: "Exercise Adherence", value: "8/12 sessions (67%)" },
-                { metric: "Nutrition Adherence", value: "75% of meals aligned" },
-            ],
-        }
-    },
-    {
-        icon: <BarChart className="h-4 w-4" />,
-        time: "June 2–20, 2025",
-        title: "Q2 Diagnostics & Strategic Reset",
-        body: "Q2 diagnostics showed significant progress: ApoB dropped from 102 to 86 mg/dL. The results validated the lifestyle-first approach, leading to a strategic reset for Q3.",
-        details: {
-            primaryGoal: "Validate whether ApoB and lipid profile improved, assess recovery metrics, and realign the Q3 strategy based on findings.",
-            triggeredBy: "Ruby coordinated diagnostics. Arjun initiated follow-ups. Dr. Warren led the interpretation and strategy reset.",
-            frictionPoints: [
-                "Lab anxiety before reviewing results.",
-                "Data overload from diagnostics, wearables, and logs.",
-                "Unrealistic expectations for 'perfect' labs after one quarter.",
-            ],
-            interventions: [
-                { expert: "Dr. Warren", action: "Interpreted results: ApoB dropped to 86, hs-CRP to 1.5. Framed it as 'clear early progress' and continued lifestyle-first approach.", justification: "A 15% reduction in ApoB from lifestyle alone is a significant clinical win. Reinforcing this success builds self-efficacy and motivation to continue with the plan before escalating to pharmaceuticals.", evidenceLink: "https://my.clevelandclinic.org/health/diseases/24689-apolipoprotein-b-apob" },
-                { expert: "Carla", action: "Celebrated fiber intake as the primary driver of improvements. Suggested tightening evening nutrition for Q3.", justification: "Attributing success to a specific behavior (fiber intake) reinforces that action. Targeting evening nutrition is a high-leverage next step, as it can improve both metabolic health and sleep quality.", evidenceLink: "" },
-                { expert: "Advik", action: "Analyzed 90 days of Whoop data showing improved HRV, RHR, and sleep. Proposed a Q3 periodized training block.", justification: "Presenting a 90-day trend analysis makes progress tangible. Periodization is a systematic way to manage training stress, ensuring continued adaptation while minimizing burnout or injury risk. It moves from ad-hoc workouts to a strategic training plan.", evidenceLink: "" },
-                { expert: "Ruby", action: "Organized a team strategy session and summarized results into a one-page dashboard for Arjun.", justification: "A unified team session ensures all experts are aligned on the go-forward strategy. A one-page summary distills complex information into a simple, actionable format, reducing the member's cognitive load.", evidenceLink: "" },
-            ],
-            finalOutcome: "ApoB progress validated lifestyle changes. Arjun shifted from anxious to motivated. A clear Q3 roadmap was set. He felt his health metrics were 'levers I can influence.'",
-            personaAnalysis: {
-                before: "Nervous, outcome-dependent, questioning if lifestyle changes were enough.",
-                after: "Empowered by tangible improvement, more patient, and ready to commit deeper.",
-            },
-            metricValues: [
-                { metric: "ApoB", value: "102 → 86 mg/dL (↓ 15%)" },
-                { metric: "HRV", value: "40 → 52 ms average (↑ 30%)" },
-                { metric: "Resting HR", value: "74 → 67 bpm (↓ 9%)" },
-            ],
-        }
-    },
-    {
-        icon: <Dumbbell className="h-4 w-4" />,
-        time: "July 1–26, 2025",
-        title: "Consolidation & Building Strength",
-        body: "Shifted focus from stabilizing risks to building physical strength and cardiovascular resilience with a periodized training block.",
-        details: {
-            primaryGoal: "Establish a structured strength routine, test recovery-aware progression, and consolidate nutrition improvements by relying less on supplements.",
-            triggeredBy: "The Elyx team rolled out the Q3 plan. Arjun checked in after noticing new muscular soreness.",
-            frictionPoints: [
-                "Muscular fatigue from new strength sessions.",
-                "Sleep discipline slips due to late-night client dinners.",
-                "Mid-month motivation dip, questioning the 'feel' of progress from strength training.",
-            ],
-            interventions: [
-                { expert: "Carla", action: "Helped transition from fiber/magnesium supplements to food sources. Introduced a post-strength recovery snack plan.", justification: "A 'food first' approach is more sustainable long-term. A targeted post-workout snack (protein + carbs) is timed to optimize muscle protein synthesis and glycogen replenishment, reducing soreness.", evidenceLink: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3905295/" },
-                { expert: "Advik", action: "Rolled out a 4-week training block. Reassured Arjun that HRV dips after strength work were normal adaptation.", justification: "Strength training creates a different type of stress than cardio. Educating the user that a temporary HRV dip is a normal part of the adaptation process prevents them from misinterpreting it as a negative signal and stopping the program.", evidenceLink: "" },
-                { expert: "Rachel", action: "Coached form via video review and prescribed pre-strength mobility drills.", justification: "Correct form is paramount for injury prevention, especially when progressing load. Pre-workout mobility activates the correct muscles and improves range of motion, leading to a more effective and safer session.", evidenceLink: "" },
-                { expert: "Ruby", action: "Organized a mid-month feedback call to address the motivation dip, reframing strength as a long-term foundation.", justification: "Motivation is not constant. Proactively addressing a dip with a feedback call and reframing the goal (from short-term metrics to long-term resilience) helps the user stay engaged through challenging periods.", evidenceLink: "" },
-            ],
-            finalOutcome: "Completed 14/16 sessions. HRV remained stable. Resting HR dipped further to 66 bpm. Reported improved posture and less back stiffness. Internalized the value of strength for longevity.",
-            personaAnalysis: {
-                before: "Confident but impatient, uncertain if strength was as 'measurable' as cardio.",
-                after: "Patient, committed, and more future-oriented. Saw strength as an investment in resilience.",
-            },
-            metricValues: [
-                { metric: "Resting HR", value: "66 bpm (↓ from 67)" },
-                { metric: "Exercise Adherence", value: "14/16 sessions (87%)" },
-                { metric: "Alcohol", value: "Reduced to 3–4 drinks/week" },
-            ],
-        }
-    },
-    {
-        icon: <FileText className="h-4 w-4" />,
-        time: "August 3–28, 2025",
-        title: "Peak Workload, Resilience vs. Regression",
-        body: "Successfully navigated the heaviest professional workload of the year, maintaining 75% adherence to workouts and preserving health gains under maximum stress.",
-        details: {
-            primaryGoal: "Maintain at least 70% adherence to workouts and nutrition guardrails during a month of peak professional workload and travel. Prevent regression.",
-            triggeredBy: "Arjun texted Ruby: 'This month will break me if I don’t have a game plan.' The team framed it as a 'resilience vs. regression experiment.'",
-            frictionPoints: [
-                "Sleep deprivation from overnight flights.",
-                "Cognitive load causing mental fatigue.",
-                "Dining indulgence during a trip to Frankfurt.",
-                "Workout drop-off risk and frustration over 'slipping back.'",
-            ],
-            interventions: [
-                { expert: "Dr. Warren", action: "Monitored BP spikes. Reassured that temporary fluctuations were expected, not regression.", justification: "During high-stress periods, reassurance from a medical expert is key. It helps the member differentiate between a temporary, expected physiological response and a genuine health regression, preventing unnecessary anxiety.", evidenceLink: "" },
-                { expert: "Carla", action: "Reintroduced the 80/20 rule for flexibility. Suggested portable nutrition hacks like protein bars and electrolyte sachets.", justification: "Rigid plans fail under high stress. The 80/20 rule provides psychological flexibility, while portable hacks ensure the member is prepared and not forced into poor choices by their environment.", evidenceLink: "" },
-                { expert: "Advik", action: "Reframed workouts as 'maintenance minimums.' Shared quick 15-min routines for busy days. Showed data of HRV dip and rebound.", justification: "Lowering the barrier to exercise ('maintenance minimums') increases the likelihood of adherence during low-resource periods. Showing the data of a dip followed by a rebound visually reinforces the concept of resilience.", evidenceLink: "" },
-                { expert: "Ruby", action: "Sent motivational nudges like 'Think consistency, not perfection.' Organized an end-of-month reflection call.", justification: "Targeted motivational messages can interrupt negative thought patterns (e.g., 'I'm failing'). An end-of-month reflection call helps the member process the experience and recognize their own resilience, turning a hard month into a learned success.", evidenceLink: "" },
-            ],
-            finalOutcome: "Completed 9/12 sessions (75%). HRV dipped but rebounded. Nutrition adherence was ~80%. Arjun felt he 'held the line' instead of collapsing, which he considered a win.",
-            personaAnalysis: {
-                before: "Anxious, fearing regression would undo his hard-earned gains.",
-                after: "More resilient, learning that sustainability under pressure matters more than perfection.",
-            },
-            metricValues: [
-                { metric: "HRV", value: "Rebounded to 52 ms after dips" },
-                { metric: "Resting HR", value: "Stable ~66 bpm" },
-                { metric: "Exercise Adherence", value: "9/12 (75%)" },
-            ],
-        }
-    },
+    }
 ];
 
+
 const JourneyTimeline = () => {
-  return (
-    <Card className="shadow-md">
-      <CardHeader>
-        <CardTitle className="font-headline">Journey Visualization</CardTitle>
-        <CardDescription>
-          An interactive timeline of your health journey.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Timeline>
-          {journeyData.map((item, index) => (
-            <TimelineItem key={index}>
-              <TimelinePoint />
-              <TimelineContent>
-                <TimelineTime>{item.time}</TimelineTime>
-                <TimelineTitle>{item.title}</TimelineTitle>
-                <TimelineBody>{item.body}</TimelineBody>
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button variant="link" size="sm" className="px-0 h-auto text-primary">View Details</Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-3xl">
-                    <DialogHeader>
-                      <DialogTitle className="font-headline text-2xl">{item.title}</DialogTitle>
-                      <DialogDescription>
-                        {item.time}
-                      </DialogDescription>
-                    </DialogHeader>
-                    <ScrollArea className="max-h-[70vh] pr-6">
-                        <div className="space-y-6 text-sm">
-                            <div className="space-y-2">
-                                <h4 className="font-semibold text-base">Primary Goal / Trigger</h4>
-                                <p className="text-muted-foreground">{item.details.primaryGoal}</p>
-                            </div>
+    return (
+        <Card className="shadow-md">
+        <CardHeader>
+            <CardTitle className="font-headline flex items-center gap-2">
+                <GitMerge className="text-primary" />
+                Member Journey
+            </CardTitle>
+            <CardDescription>
+            A chronological timeline of member interactions, interventions, and outcomes.
+            </CardDescription>
+        </CardHeader>
+        <CardContent>
+            <Timeline>
+            {journeyData.map((item, index) => (
+                <TimelineItem key={index}>
+                    <TimelinePoint />
+                    <TimelineContent>
+                        <TimelineTime>{item.time}</TimelineTime>
+                        <TimelineTitle>{item.title}</TimelineTitle>
+                        <TimelineBody>{item.body}</TimelineBody>
+                        <Dialog>
+                            <DialogTrigger asChild>
+                                <Button variant="link" size="sm" className="h-auto p-0 mt-2">View Details</Button>
+                            </DialogTrigger>
+                            <DialogContent className="max-w-4xl h-[90vh]">
+                                <DialogHeader>
+                                    <DialogTitle className="font-headline text-3xl">{item.title}</DialogTitle>
+                                    <DialogDescription>{item.time}</DialogDescription>
+                                </DialogHeader>
+                                <ScrollArea className="flex-1 -mx-6">
+                                    <div className="px-6 space-y-6">
+                                        <Separator />
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                            <div className="space-y-4">
+                                                <div>
+                                                    <h4 className="font-semibold text-lg mb-2">Primary Goal</h4>
+                                                    <p className="text-sm text-muted-foreground">{item.details.primaryGoal}</p>
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-semibold text-lg mb-2">Triggered By</h4>
+                                                    <p className="text-sm text-muted-foreground">{item.details.triggeredBy}</p>
+                                                </div>
 
-                            <Separator />
-                            
-                            <div className="space-y-2">
-                                <h4 className="font-semibold text-base">Triggered by Whom</h4>
-                                <p className="text-muted-foreground">{item.details.triggeredBy}</p>
-                            </div>
-
-                            <Separator />
-
-                            <div className="space-y-2">
-                                <h4 className="font-semibold text-base">Friction Points</h4>
-                                <ul className="list-disc list-outside pl-4 space-y-1 text-muted-foreground">
-                                    {item.details.frictionPoints.map((point, i) => <li key={i}>{point}</li>)}
-                                </ul>
-                            </div>
-                            
-                            <Separator />
-
-                            <div className="space-y-2">
-                                <h4 className="font-semibold text-base">Interventions & Actions Taken</h4>
-                                <ul className="space-y-3 text-muted-foreground">
-                                    {item.details.interventions.map((intervention, i) => (
-                                        <li key={i} className="flex flex-col gap-1">
-                                            <div>
-                                                <span className="font-semibold text-foreground/90">{intervention.expert}:</span> {intervention.action}
+                                                <div>
+                                                    <h4 className="font-semibold text-lg mb-2">Friction Points</h4>
+                                                    <ul className="list-disc list-outside pl-5 space-y-1 text-sm text-muted-foreground">
+                                                        {item.details.frictionPoints.map((point, i) => <li key={i}>{point}</li>)}
+                                                    </ul>
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-semibold text-lg mb-2">Persona Analysis</h4>
+                                                    <div className="space-y-2 text-sm">
+                                                        <p><span className="font-semibold">Before:</span> <span className="text-muted-foreground">{item.details.personaAnalysis.before}</span></p>
+                                                        <p><span className="font-semibold">After:</span> <span className="text-muted-foreground">{item.details.personaAnalysis.after}</span></p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div className="flex items-center gap-2">
-                                                 <TooltipProvider>
-                                                    <Tooltip>
-                                                        <TooltipTrigger asChild>
-                                                            <Button variant="ghost" size="icon" className="h-6 w-6 text-muted-foreground">
-                                                                <HelpCircle className="h-4 w-4" />
-                                                            </Button>
-                                                        </TooltipTrigger>
-                                                        <TooltipContent className="max-w-xs" side="right">
-                                                            <p className="font-bold mb-2">Why this intervention?</p>
-                                                            <p>{intervention.justification}</p>
-                                                            {intervention.evidenceLink && <Link href={intervention.evidenceLink} target="_blank" className="text-primary hover:underline text-xs mt-2 block">View Evidence</Link>}
-                                                        </TooltipContent>
-                                                    </Tooltip>
-                                                </TooltipProvider>
-                                                <Badge variant="outline">Why this?</Badge>
+                                            <div className="space-y-4">
+
+                                                <div>
+                                                    <h4 className="font-semibold text-lg mb-2">Interventions by Elyx Team</h4>
+                                                    <div className="space-y-4">
+                                                        {item.details.interventions.map((intervention, i) => (
+                                                            <div key={i} className="p-3 bg-muted/50 rounded-lg text-sm">
+                                                                <p><span className="font-semibold">{intervention.expert}:</span> {intervention.action}</p>
+                                                                <div className="flex items-center gap-2 mt-2">
+                                                                    <TooltipProvider>
+                                                                        <Tooltip>
+                                                                            <TooltipTrigger asChild>
+                                                                                <Badge variant="outline" className="cursor-pointer">Why this?</Badge>
+                                                                            </TooltipTrigger>
+                                                                            <TooltipContent className="max-w-xs">
+                                                                                <p>{intervention.justification}</p>
+                                                                                {intervention.evidenceLink && (
+                                                                                    <Link href={intervention.evidenceLink} target="_blank" className="text-primary text-xs hover:underline mt-2 block">
+                                                                                        Supporting Evidence
+                                                                                    </Link>
+                                                                                )}
+                                                                            </TooltipContent>
+                                                                        </Tooltip>
+                                                                    </TooltipProvider>
+                                                                </div>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-semibold text-lg mb-2">Final Outcome</h4>
+                                                    <p className="text-sm text-muted-foreground">{item.details.finalOutcome}</p>
+                                                </div>
+
+                                                <div>
+                                                    <h4 className="font-semibold text-lg mb-2">Key Metric Changes</h4>
+                                                    <div className="flex flex-wrap gap-2">
+                                                        {item.details.metricValues.map((metric, i) => (
+                                                            <Badge key={i} variant="secondary">{metric.metric}: {metric.value}</Badge>
+                                                        ))}
+                                                    </div>
+                                                </div>
+
                                             </div>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            <Separator />
-
-                            <div className="space-y-2">
-                                <h4 className="font-semibold text-base">Final Outcome</h4>
-                                <p className="text-muted-foreground">{item.details.finalOutcome}</p>
-                            </div>
-                            
-                            <Separator />
-
-                            <div className="space-y-2">
-                                <h4 className="font-semibold text-base">Stateful Persona Analysis</h4>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <p className="font-semibold text-foreground/90">Before</p>
-                                        <p className="text-muted-foreground">{item.details.personaAnalysis.before}</p>
-                                    </div>
-                                    <div>
-                                        <p className="font-semibold text-foreground/90">After</p>
-                                        <p className="text-muted-foreground">{item.details.personaAnalysis.after}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <Separator />
-
-                            <div className="space-y-2">
-                                <h4 className="font-semibold text-base">Metric Values</h4>
-                                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                                    {item.details.metricValues.map((metric, i) => (
-                                        <div key={i} className="p-3 bg-muted/50 rounded-lg">
-                                            <p className="font-semibold text-foreground/90">{metric.metric}</p>
-                                            <p className="text-muted-foreground">{metric.value}</p>
                                         </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </ScrollArea>
-                    <DialogClose asChild>
-                        <Button type="button" variant="secondary" className="mt-4">
-                          Close
-                        </Button>
-                    </DialogClose>
-                  </DialogContent>
-                </Dialog>
-              </TimelineContent>
-            </TimelineItem>
-          ))}
-        </Timeline>
-      </CardContent>
-    </Card>
-  );
+                                        <Separator />
+                                    </div>
+                                </ScrollArea>
+                                <DialogClose />
+                            </DialogContent>
+                        </Dialog>
+                    </TimelineContent>
+                </TimelineItem>
+            ))}
+            </Timeline>
+        </CardContent>
+        </Card>
+    );
 };
 
 export default JourneyTimeline;
