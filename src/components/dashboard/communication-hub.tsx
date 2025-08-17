@@ -29,7 +29,7 @@ const messages = [
 const CommunicationHub = () => {
   const [selected, setSelected] = React.useState("Dr. Warren");
   const selectedMember = teamMembers.find(m => m.name === selected);
-  const user = { name: "Jane Doe", avatar: "https://placehold.co/100x100.png", fallback: "JD" };
+  const user = { name: "Jane Doe", avatar: "https://images.unsplash.com/photo-1584999734482-0361aecad844?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMnx8UFJPRklMRSUyMFBJQ3xlbnwwfHx8fDE3NTU0NDExMzR8MA&ixlib=rb-4.1.0&q=80&w=1080", fallback: "JD" };
 
   return (
     <Card className="shadow-md flex h-[700px] w-full">
