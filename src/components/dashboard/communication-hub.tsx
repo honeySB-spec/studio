@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Send } from "lucide-react";
 
 const messages = [
@@ -71,6 +72,12 @@ const messages = [
     }
 ];
 
+const teamMembers = [
+    { name: "Ruby", description: "Concierge" },
+    { name: "Dr. Warren", description: "Medical Strategist" },
+    { name: "Advik", description: "Performance Scientist" },
+    { name: "Rachel", description: "Physiotherapist" },
+];
 
 const CommunicationHub = () => {
   return (
@@ -81,32 +88,45 @@ const CommunicationHub = () => {
           Chat with your concierge, doctors, and specialists. 4 queries remaining this week.
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex-1 overflow-hidden">
-        <ScrollArea className="h-full pr-4">
-            <div className="space-y-4">
-            {messages.map((message, index) => (
-                <div key={index} className={`flex items-end gap-2 ${message.isUser ? 'justify-end' : 'justify-start'}`}>
-                    {!message.isUser && (
-                        <Avatar className="h-8 w-8">
-                            <AvatarImage src={message.avatar} data-ai-hint={`${message.sender} profile`} />
-                            <AvatarFallback>{message.fallback}</AvatarFallback>
-                        </Avatar>
-                    )}
-                    <div className={`rounded-lg px-3 py-2 max-w-xs lg:max-w-md ${message.isUser ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
-                        <p className="text-sm font-semibold">{message.sender}</p>
-                        <p className="text-sm mt-1">{message.text}</p>
-                        <p className={`text-xs mt-1 ${message.isUser ? 'text-primary-foreground/70' : 'text-muted-foreground'} text-right`}>{message.time}</p>
-                    </div>
-                     {message.isUser && (
-                        <Avatar className="h-8 w-8">
-                            <AvatarImage src={message.avatar} data-ai-hint="profile user" />
-                            <AvatarFallback>{message.fallback}</AvatarFallback>
-                        </Avatar>
-                    )}
-                </div>
-            ))}
-            </div>
-        </ScrollArea>
+      <CardContent className="flex-1 overflow-hidden p-0">
+        <Tabs defaultValue="Ruby" className="h-full flex flex-col">
+            <TabsList className="mx-6 mt-4">
+                {teamMembers.map(member => (
+                    <TabsTrigger key={member.name} value={member.name}>{member.name}</TabsTrigger>
+                ))}
+            </TabsList>
+            {teamMembers.map(member => (
+                <TabsContent key={member.name} value={member.name} className="flex-1 overflow-hidden mt-0">
+                    <ScrollArea className="h-full pr-4">
+                        <div className="space-y-4 p-6">
+                        {messages
+                        .filter(message => message.sender === member.name || message.sender === "Jane Doe")
+                        .map((message, index) => (
+                            <div key={index} className={`flex items-end gap-2 ${message.isUser ? 'justify-end' : 'justify-start'}`}>
+                                {!message.isUser && (
+                                    <Avatar className="h-8 w-8">
+                                        <AvatarImage src={message.avatar} data-ai-hint={`${message.sender} profile`} />
+                                        <AvatarFallback>{message.fallback}</AvatarFallback>
+                                    </Avatar>
+                                )}
+                                <div className={`rounded-lg px-3 py-2 max-w-xs lg:max-w-md ${message.isUser ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
+                                    <p className="text-sm font-semibold">{message.sender}</p>
+                                    <p className="text-sm mt-1">{message.text}</p>
+                                    <p className={`text-xs mt-1 ${message.isUser ? 'text-primary-foreground/70' : 'text-muted-foreground'} text-right`}>{message.time}</p>
+                                </div>
+                                 {message.isUser && (
+                                    <Avatar className="h-8 w-8">
+                                        <AvatarImage src={message.avatar} data-ai-hint="profile user" />
+                                        <AvatarFallback>{message.fallback}</AvatarFallback>
+                                    </Avatar>
+                                )}
+                            </div>
+                        ))}
+                        </div>
+                    </ScrollArea>
+                </TabsContent>
+             ))}
+        </Tabs>
       </CardContent>
       <CardFooter className="p-4 border-t">
         <div className="flex w-full items-center space-x-2">
