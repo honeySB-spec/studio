@@ -6,11 +6,11 @@ import CommunicationHub from '@/components/dashboard/communication-hub';
 export default function MessagesPage() {
   return (
     <SidebarProvider>
-      <div className="flex min-h-screen">
+      <div className="flex h-screen max-h-screen overflow-hidden">
         <AppSidebar />
-        <SidebarInset className="flex-1 bg-background">
+        <SidebarInset className="flex-1 bg-background flex flex-col">
           <AppHeader />
-          <main className="p-4 md:p-8">
+          <main className="flex-1 overflow-hidden">
             <CommunicationHub />
           </main>
         </SidebarInset>

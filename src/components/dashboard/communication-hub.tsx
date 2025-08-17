@@ -64,13 +64,16 @@ const CommunicationHub = () => {
   
   React.useEffect(() => {
     if (scrollAreaRef.current) {
-        scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight;
+        const scrollViewport = scrollAreaRef.current.querySelector('[data-radix-scroll-area-viewport]');
+        if (scrollViewport) {
+          scrollViewport.scrollTop = scrollViewport.scrollHeight;
+        }
     }
-  }, [messages]);
+  }, [messages, selected]);
 
 
   return (
-    <Card className="shadow-md flex h-[700px] w-full">
+    <Card className="shadow-md flex h-full w-full rounded-none border-0">
         <div className="flex flex-col w-[300px] border-r bg-muted/20">
             <div className="p-4 border-b">
                 <h2 className="text-2xl font-headline font-bold">Messages</h2>
@@ -118,30 +121,32 @@ const CommunicationHub = () => {
                         <p className="text-sm text-muted-foreground">{selectedMember.description}</p>
                     </div>
                 </div>
-                <CardContent className="flex-1 p-6 overflow-y-auto" ref={scrollAreaRef}>
-                    <div className="space-y-6">
-                        {messages.length > 0 ? messages.map((message, index) => (
-                            <div key={index} className={`flex items-end gap-2 ${message.isUser ? "justify-end" : "justify-start"}`}>
-                                {!message.isUser && (
-                                    <Avatar className="h-8 w-8">
-                                        <AvatarImage src={selectedMember.avatar} data-ai-hint={`${selectedMember.name} profile`} />
-                                        <AvatarFallback>{selectedMember.fallback}</AvatarFallback>
-                                    </Avatar>
-                                )}
-                                <div className={`rounded-lg px-3 py-2 max-w-xs lg:max-w-md ${message.isUser ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
-                                    <p className="text-sm">{message.content}</p>
-                                    <p className={`text-xs mt-1 ${message.isUser ? 'text-primary-foreground/70' : 'text-muted-foreground'} text-right`}>{message.time}</p>
+                <ScrollArea className="flex-1" ref={scrollAreaRef}>
+                    <CardContent className="p-6">
+                        <div className="space-y-6">
+                            {messages.length > 0 ? messages.map((message, index) => (
+                                <div key={index} className={`flex items-end gap-2 ${message.isUser ? "justify-end" : "justify-start"}`}>
+                                    {!message.isUser && (
+                                        <Avatar className="h-8 w-8">
+                                            <AvatarImage src={selectedMember.avatar} data-ai-hint={`${selectedMember.name} profile`} />
+                                            <AvatarFallback>{selectedMember.fallback}</AvatarFallback>
+                                        </Avatar>
+                                    )}
+                                    <div className={`rounded-lg px-3 py-2 max-w-xs lg:max-w-md ${message.isUser ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
+                                        <p className="text-sm">{message.content}</p>
+                                        <p className={`text-xs mt-1 ${message.isUser ? 'text-primary-foreground/70' : 'text-muted-foreground'} text-right`}>{message.time}</p>
+                                    </div>
+                                    {message.isUser && (
+                                        <Avatar className="h-8 w-8">
+                                            <AvatarImage src={user.avatar} data-ai-hint="user profile" />
+                                            <AvatarFallback>{user.fallback}</AvatarFallback>
+                                        </Avatar>
+                                    )}
                                 </div>
-                                {message.isUser && (
-                                    <Avatar className="h-8 w-8">
-                                        <AvatarImage src={user.avatar} data-ai-hint="user profile" />
-                                        <AvatarFallback>{user.fallback}</AvatarFallback>
-                                    </Avatar>
-                                )}
-                            </div>
-                        )) : <div className="text-center text-muted-foreground">No messages yet.</div>}
-                    </div>
-                </CardContent>
+                            )) : <div className="text-center text-muted-foreground">No messages yet.</div>}
+                        </div>
+                    </CardContent>
+                </ScrollArea>
                 <div className="p-4 border-t bg-background">
                     <div className="relative">
                     <Input placeholder="Type your message..." className="pr-12" />
